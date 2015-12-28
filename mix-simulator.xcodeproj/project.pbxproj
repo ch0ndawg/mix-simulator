@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C76EF2D1C2D20DA00F3AD57 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C76EF2C1C2D20DA00F3AD57 /* main.cpp */; };
+		8C76EF511C2F54CA00F3AD57 /* mixop-table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */; };
+		8C76EF541C30EC8900F3AD57 /* mix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C76EF531C30EC8900F3AD57 /* mix.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		8C76EF291C2D20DA00F3AD57 /* mix-simulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "mix-simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C76EF2C1C2D20DA00F3AD57 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8C76EF4E1C2F548800F3AD57 /* mix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mix.h; sourceTree = "<group>"; };
+		8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "mixop-table.cpp"; sourceTree = "<group>"; };
+		8C76EF501C2F54CA00F3AD57 /* mixop-table.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "mixop-table.hpp"; sourceTree = "<group>"; };
+		8C76EF531C30EC8900F3AD57 /* mix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mix.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				8C76EF2C1C2D20DA00F3AD57 /* main.cpp */,
+				8C76EF531C30EC8900F3AD57 /* mix.cpp */,
+				8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */,
+				8C76EF501C2F54CA00F3AD57 /* mixop-table.hpp */,
+				8C76EF4E1C2F548800F3AD57 /* mix.h */,
 			);
 			path = "mix-simulator";
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C76EF541C30EC8900F3AD57 /* mix.cpp in Sources */,
+				8C76EF511C2F54CA00F3AD57 /* mixop-table.cpp in Sources */,
 				8C76EF2D1C2D20DA00F3AD57 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
