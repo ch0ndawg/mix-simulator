@@ -29,6 +29,7 @@ int main(int argc, const char * argv[])
             Opcode oc = Opcode(V.byte[4]); // get the opcode
             MIXAddr AA(V); // get the address (first two bytes)
             opTable[oc](AA,V.byte[2],V.byte[3],oc); // call the op table
+            // (this is the concept of "interpretive routine")
             
             // if it is a jump instruction, set the location of the next instruction accordingly
             if (static_cast<int>(oc) >= static_cast<int>(JMP)
@@ -63,13 +64,13 @@ void octalEntry()
 {
     for (;;) {
         std::string s;
-        std::cerr << "Would you like to enter (more) data (Y/N)? ";
+        std::cerr << "Would you like to set the memory (Y/N)? ";
         std::cin >> s;
         if (s[0] != 'Y' && s[0] != 'y') break; // if anything but yes, exit
         int N,M;
         
         std::cerr << "How many memory entries do you want enter? ";
-        std::cin>> std::dec >> N;
+        std::cin >> N;
         std::cerr << "Where do you want to start? ";
         std::cin>> std::dec >> M;
         if (M < 0) M=0;
@@ -96,9 +97,9 @@ void octalDump()
         if (s[0] != 'Y' && s[0] != 'y') break; // if anything but yes, exit
         int N, M;
         std::cerr << "How many memory entries do you want to see? ";
-        std::cin>> std::dec >> N;
+        std::cin>>  N;
         std::cerr << "Where do you want to start? ";
-        std::cin>> std::dec >> M;
+        std::cin>>  M;
         if (M < 0) M=0;
         
         std::cout << "Octal dump starting at location "
@@ -106,7 +107,7 @@ void octalDump()
         std::cout << std::setfill('0');
         for (int i= M; i < M+N && i< ADDR_CAP; i++) {
             MIXWord V = Memory[i];
-            std::cout   << std::noshowpos << std::dec << std::setw(4) << i << ": ";
+            std::cout << std::setw(4) << i << ": ";
             std::cout << V;
             std::cout << std::endl;
         }

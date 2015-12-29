@@ -53,9 +53,17 @@ int MIXWord::decode(int lo,int hi) const
 
 std::ostream &operator <<(std::ostream &os, MIXWord& V)
 {
-    os  << std::showpos << static_cast<int>(V.sign) << ' ';
+    // get old flags and state
+    std::ios_base::fmtflags old_flags = os.flags();
+    os.setf(std::ios::showpos);
+    os << static_cast<int>(V.sign) << ' ';
+    os.unsetf(std::ios::showpos);
     for (int j=0; j<5; j++) {
-        os << std::setw(2) << std::oct << static_cast<unsigned int>(V.byte[j]) << ' ';
+        os.setf(std::ios::oct, std::ios::basefield);
+        os.width(2);
+        os << static_cast<unsigned int>(V.byte[j]) << ' ';
     }
+    // restore old flags
+    os.setf(old_flags);
     return os;
 }
