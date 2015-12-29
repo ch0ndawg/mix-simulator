@@ -8,7 +8,9 @@
 #include "mix.h"
 #include "mixop-table.hpp"
 #include <cstdlib>
+#include <cassert>
 #include <sstream>
+#include <iostream>
 
 typedef long int LongInt;
 constexpr LongInt WORDBASE = 1073741824L;
@@ -150,9 +152,8 @@ void shift(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
 
 // Load instructions:
 // This function covers all register cases, possibly with sign change.
-// It uses indirection and some flags to
-// avoid code duplication
-
+// It uses indirection and some flags to avoid code duplication
+// In other words, this handles about 16 different instructions
 void load(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
 {
     int lo = field/8;
@@ -232,12 +233,56 @@ void move(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc) {
     nullfunc(addr, index, field, oc); // again call nullfunc
 }
 
+void jump(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
+{
+    int newAddr = addr.decode() + IReg[index].decode();
+    bool jumpcond = false;
+    switch (field) {
+        case 0:
+        case 1:
+            jumpcond=true;
+            break;
+        case 2:
+            jumpcond = overflowToggle;
+            break;
+        case 3:
+            jumpcond = !overflowToggle;
+            break;
+        case 4:
+            jumpcond =  compIndicator < 0;
+            break;
+        case 5:
+            jumpcond = compIndicator == 0;
+            break;
+        case 6:
+            jumpcond = compIndicator > 0;
+            break;
+        case 7:
+            jumpcond = compIndicator <=0;
+            break;
+        case 8:
+            jumpcond = compIndicator != 0;
+            break;
+        case 9:
+            jumpcond = compIndicator >= 0;
+            break;
+        default:
+            std::clog << "Should not have gotten to default in jump instruction.\n";
+            assert(0);
+            break;
+    }
+    // if the condition is satisfied, update the program counter accordingly
+    if (jumpcond) programCounter = newAddr;
+    // otherwise just increment it
+    else programCounter++;
+}
+
 // The actual optable
 MIXOp opTable[64] = {&nop, &add, &sub, &mul, &div, &numChar, &shift, &move,
                     &load, &load, &load, &load, &load, &load, &load, &load,
                     &load, &load, &load, &load, &load, &load, &load, &load,
                      &store, &store, &store, &store, &store, &store, &store, &store,
-      &store, &store, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc,
+      &store, &store, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &jump,
 &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc,
 &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc,
 &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc};

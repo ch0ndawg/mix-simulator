@@ -15,9 +15,9 @@
 struct bad_opcode { std::string what;
     bad_opcode(std::string s) : what(s) {}
 };
-class halted_exception {};
-class address_violation {};
-class memory_access_violation : address_violation {};
+struct halted_exception {};
+struct address_violation {};
+struct memory_access_violation : address_violation {};
 
 constexpr int NUMBASE=64;
 constexpr auto ADDR_CAP = 4000;

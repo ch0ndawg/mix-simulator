@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>mix-simulator-osx.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>mix-simulator-osxTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>mix-simulator.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +22,21 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>8C3EF2191C3211D7006F7EF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C3EF22E1C3211D7006F7EF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C3EF2391C3211D7006F7EF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8C76EF281C2D20DA00F3AD57</key>
 		<dict>
 			<key>primary</key>

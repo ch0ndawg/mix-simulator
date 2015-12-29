@@ -21,41 +21,46 @@ int main(int argc, const char * argv[])
 {
     
     // read file to load memory at address zero
-    octalEntry();
-    try {
-        // main event loop: read the next instruction and interpret it
-        while ( true ) {
-            MIXWord V = Memory[programCounter]; // get the value
-            Opcode oc = Opcode(V.byte[4]); // get the opcode
-            MIXAddr AA(V); // get the address (first two bytes)
-            opTable[oc](AA,V.byte[2],V.byte[3],oc); // call the op table
-            // (this is the concept of "interpretive routine")
-            
-            // if it is a jump instruction, set the location of the next instruction accordingly
-            if (static_cast<int>(oc) >= static_cast<int>(JMP)
-                &&static_cast<int>(oc) <= static_cast<int>(JXN))  {
-                if (oc != JSJ) JReg = MIXAddr(programCounter);
-                programCounter = AA.decode();
-            } else { // otherwise just increment the program counter
-                ++programCounter;
+    while (true) {
+        octalEntry();
+        try {
+            // main event loop: read the next instruction and interpret it
+            while ( true ) {
+                MIXWord V = Memory[programCounter]; // get the value
+                Opcode oc = Opcode(V.byte[4]); // get the opcode
+                MIXAddr AA(V); // get the address (first two bytes)
+                opTable[oc](AA,V.byte[2],V.byte[3],oc); // call the op table
+                // (this is the concept of "interpretive routine")
+                
+                // if it is a jump instruction, set the location of the next instruction accordingly
+                if (static_cast<int>(oc) >= static_cast<int>(JMP)
+                    &&static_cast<int>(oc) <= static_cast<int>(JXN))  {
+                    if (oc != JSJ) JReg = MIXAddr(programCounter);
+                } else { // otherwise just increment the program counter
+                    ++programCounter;
+                }
+                // rudimentary managed environment:
+                if (programCounter >= ADDR_CAP) throw memory_access_violation();
             }
-            // rudimentary managed environment:
-            if (programCounter >= ADDR_CAP) throw memory_access_violation();
         }
+        catch(halted_exception&) {
+            std::cerr << "Execution finished.\n";
+        }
+        catch(address_violation&) {
+            std::cerr << "Invalid address.\n";
+        }
+        catch(bad_opcode& ex) {
+            std::cerr << ex.what;
+        }
+        catch (...) {
+            std::cerr << "Unknown exception occurred.\n";
+        }
+        octalDump();
+        std::string s;
+        std::cerr << "Run again (Y/N)? ";
+        std::cin >> s;
+        if (s[0]!= 'Y' && s[0] != 'y') break;
     }
-    catch(halted_exception&) {
-        std::cerr << "Execution finished. ";
-    }
-    catch(address_violation&) {
-        std::cerr << "Invalid address.\n";
-    }
-    catch(bad_opcode& ex) {
-        std::cerr << ex.what;
-    }
-    catch (...) {
-        std::cerr << "Unknown exception occurred.\n";
-    }
-    octalDump();
     // write memory to file
     return 0;
 }

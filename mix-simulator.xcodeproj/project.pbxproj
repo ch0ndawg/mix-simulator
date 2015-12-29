@@ -7,10 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C3EF21E1C3211D7006F7EF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EF21D1C3211D7006F7EF5 /* AppDelegate.m */; };
+		8C3EF2211C3211D7006F7EF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EF2201C3211D7006F7EF5 /* main.m */; };
+		8C3EF2241C3211D7006F7EF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EF2231C3211D7006F7EF5 /* ViewController.m */; };
+		8C3EF2261C3211D7006F7EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3EF2251C3211D7006F7EF5 /* Assets.xcassets */; };
+		8C3EF2291C3211D7006F7EF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C3EF2271C3211D7006F7EF5 /* Main.storyboard */; };
+		8C3EF2341C3211D7006F7EF5 /* mix_simulator_osxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EF2331C3211D7006F7EF5 /* mix_simulator_osxTests.m */; };
+		8C3EF23F1C3211D7006F7EF5 /* mix_simulator_osxUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EF23E1C3211D7006F7EF5 /* mix_simulator_osxUITests.m */; };
 		8C76EF2D1C2D20DA00F3AD57 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C76EF2C1C2D20DA00F3AD57 /* main.cpp */; };
 		8C76EF511C2F54CA00F3AD57 /* mixop-table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */; };
 		8C76EF541C30EC8900F3AD57 /* mix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C76EF531C30EC8900F3AD57 /* mix.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C3EF2301C3211D7006F7EF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C76EF211C2D20DA00F3AD57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C3EF2191C3211D7006F7EF5;
+			remoteInfo = "mix-simulator-osx";
+		};
+		8C3EF23B1C3211D7006F7EF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C76EF211C2D20DA00F3AD57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C3EF2191C3211D7006F7EF5;
+			remoteInfo = "mix-simulator-osx";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8C76EF271C2D20DA00F3AD57 /* CopyFiles */ = {
@@ -25,15 +49,51 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C3EF21A1C3211D7006F7EF5 /* mix-simulator-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mix-simulator-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C3EF21C1C3211D7006F7EF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8C3EF21D1C3211D7006F7EF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8C3EF2201C3211D7006F7EF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8C3EF2221C3211D7006F7EF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8C3EF2231C3211D7006F7EF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8C3EF2251C3211D7006F7EF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8C3EF2281C3211D7006F7EF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8C3EF22A1C3211D7006F7EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C3EF22F1C3211D7006F7EF5 /* mix-simulator-osxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mix-simulator-osxTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C3EF2331C3211D7006F7EF5 /* mix_simulator_osxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mix_simulator_osxTests.m; sourceTree = "<group>"; };
+		8C3EF2351C3211D7006F7EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C3EF23A1C3211D7006F7EF5 /* mix-simulator-osxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mix-simulator-osxUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C3EF23E1C3211D7006F7EF5 /* mix_simulator_osxUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mix_simulator_osxUITests.m; sourceTree = "<group>"; };
+		8C3EF2401C3211D7006F7EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C76EF291C2D20DA00F3AD57 /* mix-simulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "mix-simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C76EF2C1C2D20DA00F3AD57 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		8C76EF4E1C2F548800F3AD57 /* mix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mix.h; sourceTree = "<group>"; };
-		8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "mixop-table.cpp"; sourceTree = "<group>"; };
-		8C76EF501C2F54CA00F3AD57 /* mixop-table.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "mixop-table.hpp"; sourceTree = "<group>"; };
-		8C76EF531C30EC8900F3AD57 /* mix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mix.cpp; sourceTree = "<group>"; };
+		8C76EF4E1C2F548800F3AD57 /* mix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mix.h; path = "mix-simulator/mix.h"; sourceTree = "<group>"; };
+		8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "mixop-table.cpp"; path = "mix-simulator/mixop-table.cpp"; sourceTree = "<group>"; };
+		8C76EF501C2F54CA00F3AD57 /* mixop-table.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = "mixop-table.hpp"; path = "mix-simulator/mixop-table.hpp"; sourceTree = "<group>"; };
+		8C76EF531C30EC8900F3AD57 /* mix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mix.cpp; path = "mix-simulator/mix.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8C3EF2171C3211D7006F7EF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C3EF22C1C3211D7006F7EF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C3EF2371C3211D7006F7EF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8C76EF261C2D20DA00F3AD57 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,10 +104,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C3EF21B1C3211D7006F7EF5 /* mix-simulator-osx */ = {
+			isa = PBXGroup;
+			children = (
+				8C3EF21C1C3211D7006F7EF5 /* AppDelegate.h */,
+				8C3EF21D1C3211D7006F7EF5 /* AppDelegate.m */,
+				8C3EF2221C3211D7006F7EF5 /* ViewController.h */,
+				8C3EF2231C3211D7006F7EF5 /* ViewController.m */,
+				8C3EF2251C3211D7006F7EF5 /* Assets.xcassets */,
+				8C3EF2271C3211D7006F7EF5 /* Main.storyboard */,
+				8C3EF22A1C3211D7006F7EF5 /* Info.plist */,
+				8C3EF21F1C3211D7006F7EF5 /* Supporting Files */,
+			);
+			path = "mix-simulator-osx";
+			sourceTree = "<group>";
+		};
+		8C3EF21F1C3211D7006F7EF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8C3EF2201C3211D7006F7EF5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8C3EF2321C3211D7006F7EF5 /* mix-simulator-osxTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C3EF2331C3211D7006F7EF5 /* mix_simulator_osxTests.m */,
+				8C3EF2351C3211D7006F7EF5 /* Info.plist */,
+			);
+			path = "mix-simulator-osxTests";
+			sourceTree = "<group>";
+		};
+		8C3EF23D1C3211D7006F7EF5 /* mix-simulator-osxUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8C3EF23E1C3211D7006F7EF5 /* mix_simulator_osxUITests.m */,
+				8C3EF2401C3211D7006F7EF5 /* Info.plist */,
+			);
+			path = "mix-simulator-osxUITests";
+			sourceTree = "<group>";
+		};
 		8C76EF201C2D20DA00F3AD57 = {
 			isa = PBXGroup;
 			children = (
+				8C76EF531C30EC8900F3AD57 /* mix.cpp */,
+				8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */,
+				8C76EF501C2F54CA00F3AD57 /* mixop-table.hpp */,
+				8C76EF4E1C2F548800F3AD57 /* mix.h */,
 				8C76EF2B1C2D20DA00F3AD57 /* mix-simulator */,
+				8C3EF21B1C3211D7006F7EF5 /* mix-simulator-osx */,
+				8C3EF2321C3211D7006F7EF5 /* mix-simulator-osxTests */,
+				8C3EF23D1C3211D7006F7EF5 /* mix-simulator-osxUITests */,
 				8C76EF2A1C2D20DA00F3AD57 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				8C76EF291C2D20DA00F3AD57 /* mix-simulator */,
+				8C3EF21A1C3211D7006F7EF5 /* mix-simulator-osx.app */,
+				8C3EF22F1C3211D7006F7EF5 /* mix-simulator-osxTests.xctest */,
+				8C3EF23A1C3211D7006F7EF5 /* mix-simulator-osxUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,10 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				8C76EF2C1C2D20DA00F3AD57 /* main.cpp */,
-				8C76EF531C30EC8900F3AD57 /* mix.cpp */,
-				8C76EF4F1C2F54C900F3AD57 /* mixop-table.cpp */,
-				8C76EF501C2F54CA00F3AD57 /* mixop-table.hpp */,
-				8C76EF4E1C2F548800F3AD57 /* mix.h */,
 			);
 			path = "mix-simulator";
 			sourceTree = "<group>";
@@ -75,6 +182,59 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8C3EF2191C3211D7006F7EF5 /* mix-simulator-osx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C3EF2471C3211D7006F7EF5 /* Build configuration list for PBXNativeTarget "mix-simulator-osx" */;
+			buildPhases = (
+				8C3EF2161C3211D7006F7EF5 /* Sources */,
+				8C3EF2171C3211D7006F7EF5 /* Frameworks */,
+				8C3EF2181C3211D7006F7EF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mix-simulator-osx";
+			productName = "mix-simulator-osx";
+			productReference = 8C3EF21A1C3211D7006F7EF5 /* mix-simulator-osx.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8C3EF22E1C3211D7006F7EF5 /* mix-simulator-osxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C3EF2481C3211D7006F7EF5 /* Build configuration list for PBXNativeTarget "mix-simulator-osxTests" */;
+			buildPhases = (
+				8C3EF22B1C3211D7006F7EF5 /* Sources */,
+				8C3EF22C1C3211D7006F7EF5 /* Frameworks */,
+				8C3EF22D1C3211D7006F7EF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C3EF2311C3211D7006F7EF5 /* PBXTargetDependency */,
+			);
+			name = "mix-simulator-osxTests";
+			productName = "mix-simulator-osxTests";
+			productReference = 8C3EF22F1C3211D7006F7EF5 /* mix-simulator-osxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8C3EF2391C3211D7006F7EF5 /* mix-simulator-osxUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C3EF2491C3211D7006F7EF5 /* Build configuration list for PBXNativeTarget "mix-simulator-osxUITests" */;
+			buildPhases = (
+				8C3EF2361C3211D7006F7EF5 /* Sources */,
+				8C3EF2371C3211D7006F7EF5 /* Frameworks */,
+				8C3EF2381C3211D7006F7EF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C3EF23C1C3211D7006F7EF5 /* PBXTargetDependency */,
+			);
+			name = "mix-simulator-osxUITests";
+			productName = "mix-simulator-osxUITests";
+			productReference = 8C3EF23A1C3211D7006F7EF5 /* mix-simulator-osxUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		8C76EF281C2D20DA00F3AD57 /* mix-simulator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C76EF301C2D20DA00F3AD57 /* Build configuration list for PBXNativeTarget "mix-simulator" */;
@@ -101,6 +261,17 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Chris;
 				TargetAttributes = {
+					8C3EF2191C3211D7006F7EF5 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					8C3EF22E1C3211D7006F7EF5 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 8C3EF2191C3211D7006F7EF5;
+					};
+					8C3EF2391C3211D7006F7EF5 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 8C3EF2191C3211D7006F7EF5;
+					};
 					8C76EF281C2D20DA00F3AD57 = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
@@ -112,6 +283,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8C76EF201C2D20DA00F3AD57;
 			productRefGroup = 8C76EF2A1C2D20DA00F3AD57 /* Products */;
@@ -119,11 +291,66 @@
 			projectRoot = "";
 			targets = (
 				8C76EF281C2D20DA00F3AD57 /* mix-simulator */,
+				8C3EF2191C3211D7006F7EF5 /* mix-simulator-osx */,
+				8C3EF22E1C3211D7006F7EF5 /* mix-simulator-osxTests */,
+				8C3EF2391C3211D7006F7EF5 /* mix-simulator-osxUITests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		8C3EF2181C3211D7006F7EF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C3EF2261C3211D7006F7EF5 /* Assets.xcassets in Resources */,
+				8C3EF2291C3211D7006F7EF5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C3EF22D1C3211D7006F7EF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C3EF2381C3211D7006F7EF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		8C3EF2161C3211D7006F7EF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C3EF2241C3211D7006F7EF5 /* ViewController.m in Sources */,
+				8C3EF2211C3211D7006F7EF5 /* main.m in Sources */,
+				8C3EF21E1C3211D7006F7EF5 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C3EF22B1C3211D7006F7EF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C3EF2341C3211D7006F7EF5 /* mix_simulator_osxTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C3EF2361C3211D7006F7EF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C3EF23F1C3211D7006F7EF5 /* mix_simulator_osxUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8C76EF251C2D20DA00F3AD57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,7 +363,107 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8C3EF2311C3211D7006F7EF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C3EF2191C3211D7006F7EF5 /* mix-simulator-osx */;
+			targetProxy = 8C3EF2301C3211D7006F7EF5 /* PBXContainerItemProxy */;
+		};
+		8C3EF23C1C3211D7006F7EF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C3EF2191C3211D7006F7EF5 /* mix-simulator-osx */;
+			targetProxy = 8C3EF23B1C3211D7006F7EF5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8C3EF2271C3211D7006F7EF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C3EF2281C3211D7006F7EF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		8C3EF2411C3211D7006F7EF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "mix-simulator-osx/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nestedtori.mix-simulator-osx";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8C3EF2421C3211D7006F7EF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "mix-simulator-osx/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nestedtori.mix-simulator-osx";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8C3EF2431C3211D7006F7EF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "mix-simulator-osxTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nestedtori.mix-simulator-osxTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mix-simulator-osx.app/Contents/MacOS/mix-simulator-osx";
+			};
+			name = Debug;
+		};
+		8C3EF2441C3211D7006F7EF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "mix-simulator-osxTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nestedtori.mix-simulator-osxTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mix-simulator-osx.app/Contents/MacOS/mix-simulator-osx";
+			};
+			name = Release;
+		};
+		8C3EF2451C3211D7006F7EF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "mix-simulator-osxUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nestedtori.mix-simulator-osxUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "mix-simulator-osx";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		8C3EF2461C3211D7006F7EF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "mix-simulator-osxUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nestedtori.mix-simulator-osxUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "mix-simulator-osx";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		8C76EF2E1C2D20DA00F3AD57 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -233,6 +560,30 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8C3EF2471C3211D7006F7EF5 /* Build configuration list for PBXNativeTarget "mix-simulator-osx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C3EF2411C3211D7006F7EF5 /* Debug */,
+				8C3EF2421C3211D7006F7EF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8C3EF2481C3211D7006F7EF5 /* Build configuration list for PBXNativeTarget "mix-simulator-osxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C3EF2431C3211D7006F7EF5 /* Debug */,
+				8C3EF2441C3211D7006F7EF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8C3EF2491C3211D7006F7EF5 /* Build configuration list for PBXNativeTarget "mix-simulator-osxUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C3EF2451C3211D7006F7EF5 /* Debug */,
+				8C3EF2461C3211D7006F7EF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		8C76EF241C2D20DA00F3AD57 /* Build configuration list for PBXProject "mix-simulator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -249,6 +600,7 @@
 				8C76EF321C2D20DA00F3AD57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
