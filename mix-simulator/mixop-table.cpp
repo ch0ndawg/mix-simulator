@@ -142,6 +142,7 @@ void div(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
 void numChar(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
 {
     if (field==2) throw halted_exception();
+     nullfunc(addr, index,field,oc); // not yet implemented
 }
 
 
@@ -244,9 +245,11 @@ void jump(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
             break;
         case 2:
             jumpcond = overflowToggle;
+            overflowToggle = false;
             break;
         case 3:
             jumpcond = !overflowToggle;
+            overflowToggle = false;
             break;
         case 4:
             jumpcond =  compIndicator < 0;
@@ -258,13 +261,13 @@ void jump(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
             jumpcond = compIndicator > 0;
             break;
         case 7:
-            jumpcond = compIndicator <=0;
+            jumpcond = compIndicator >=0;
             break;
         case 8:
             jumpcond = compIndicator != 0;
             break;
         case 9:
-            jumpcond = compIndicator >= 0;
+            jumpcond = compIndicator <= 0;
             break;
         default:
             std::clog << "Should not have gotten to default in jump instruction.\n";
@@ -277,12 +280,62 @@ void jump(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
     else programCounter++;
 }
 
+void jumpRegCond(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
+{
+    bool jumpcond = false;
+    int newAddr = addr.decode()+ IReg[index].decode();
+   // int val = Memory[newAddr].decode(lo,hi); // full decoding and promotion
+    
+    // index into the array of registers (LDA is at the base)
+    int whichReg = static_cast<int>(oc) - static_cast<int>(JAN);
+    
+    int val =0;
+    if ((whichReg > 0 && whichReg < 7) ) {
+        // get the data as MIXAddr
+        const MIXAddr *r = static_cast<const MIXAddr*>(registers[whichReg]);
+        val = r->decode();
+    } else { // A or X
+        const MIXWord *r = static_cast<const MIXWord*>(registers[whichReg]);
+        val = r->decode();
+        // preserve negative zero, unless the field spec forbids it
+    }
+
+    switch (field) {
+        case 0:
+            jumpcond= val<0;
+            break;
+        case 1:
+            jumpcond = val ==0;
+            break;
+        case 2:
+            jumpcond = val > 0;
+            break;
+        case 3:
+            jumpcond =  val >= 0;
+            break;
+        case 4:
+            jumpcond = val!=0;
+            break;
+        case 5:
+            jumpcond = val <= 0;
+            break;
+            
+        default:
+            std::clog << "Should not have gotten to default in jump instruction.\n";
+            assert(0);
+            break;
+    }
+    if (jumpcond) programCounter = newAddr;
+    // otherwise just increment it
+    else programCounter++;
+}
+
 // The actual optable
-MIXOp opTable[64] = {&nop, &add, &sub, &mul, &div, &numChar, &shift, &move,
-                    &load, &load, &load, &load, &load, &load, &load, &load,
-                    &load, &load, &load, &load, &load, &load, &load, &load,
-                     &store, &store, &store, &store, &store, &store, &store, &store,
-      &store, &store, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &jump,
-&nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc,
-&nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc,
-&nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc};
+MIXOp opTable[64] = {&nop, &add, &sub, &mul, &div, &numChar, &shift, &move, // 0 to 7 : arithmetic and special
+                    &load, &load, &load, &load, &load, &load, &load, &load, // 8 to 15 : load ops
+                    &load, &load, &load, &load, &load, &load, &load, &load, // 16 to 23 : load neg ops
+                     &store, &store, &store, &store, &store, &store, &store, &store, // 24 to 31 : store ops
+      &store, &store, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &jump, // 32 to 39 : store, I/O, jump on indicators
+&jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, // 40 to 47 : jump on registers
+&nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, // 48 to 55 :  immediates
+&nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc}; // 55 to 63 : comparison
