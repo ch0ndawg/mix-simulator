@@ -238,35 +238,47 @@ void jump(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
 {
     int newAddr = addr.decode() + IReg[index].decode();
     bool jumpcond = false;
+    enum {
+        UNCOND,
+        UNCOND_SAVE,
+        OV,
+        NOV,
+        LESS,
+        EQ,
+        GREATER,
+        GE,
+        NE,
+        LE
+    };
     switch (field) {
-        case 0:
-        case 1:
+        case UNCOND:
+        case UNCOND_SAVE:
             jumpcond=true;
             break;
-        case 2:
+        case OV:
             jumpcond = overflowToggle;
             overflowToggle = false;
             break;
-        case 3:
+        case NOV:
             jumpcond = !overflowToggle;
             overflowToggle = false;
             break;
-        case 4:
+        case LESS:
             jumpcond =  compIndicator < 0;
             break;
-        case 5:
+        case EQ:
             jumpcond = compIndicator == 0;
             break;
-        case 6:
+        case GREATER:
             jumpcond = compIndicator > 0;
             break;
-        case 7:
+        case GE:
             jumpcond = compIndicator >=0;
             break;
-        case 8:
+        case NE:
             jumpcond = compIndicator != 0;
             break;
-        case 9:
+        case LE:
             jumpcond = compIndicator <= 0;
             break;
         default:
@@ -282,6 +294,14 @@ void jump(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
 
 void jumpRegCond(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
 {
+    enum {
+        NEG,
+        ZERO,
+        POS,
+        NONNEG,
+        NONZERO,
+        NONPOS
+    };
     bool jumpcond = false;
     int newAddr = addr.decode()+ IReg[index].decode();
    // int val = Memory[newAddr].decode(lo,hi); // full decoding and promotion
@@ -297,26 +317,25 @@ void jumpRegCond(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
     } else { // A or X
         const MIXWord *r = static_cast<const MIXWord*>(registers[whichReg]);
         val = r->decode();
-        // preserve negative zero, unless the field spec forbids it
     }
 
     switch (field) {
-        case 0:
+        case NEG:
             jumpcond= val<0;
             break;
-        case 1:
+        case ZERO:
             jumpcond = val ==0;
             break;
-        case 2:
+        case POS:
             jumpcond = val > 0;
             break;
-        case 3:
+        case NONNEG:
             jumpcond =  val >= 0;
             break;
-        case 4:
+        case NONZERO:
             jumpcond = val!=0;
             break;
-        case 5:
+        case NONPOS:
             jumpcond = val <= 0;
             break;
             
@@ -330,6 +349,52 @@ void jumpRegCond(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
     else programCounter++;
 }
 
+void immed(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
+{
+    enum {
+        ENT_F,
+        ENN_F,
+        INC_F,
+        DEC_F
+    };
+    int whichReg = static_cast<int>(oc) - static_cast<int>(INCA);
+    int val = addr.decode() + IReg[index].decode();
+    if (field == ENN_F || field == DEC_F) val = -val; // negate
+    
+    if ((whichReg > 0 && whichReg < 7) ) {
+        MIXAddr *r = static_cast<MIXAddr*>(mutable_registers[whichReg]);
+        if (field >= INC_F) val += r->decode(); // add what's there
+        *r = MIXAddr(val);
+    } else { // A or X
+        MIXWord *r = static_cast<MIXWord*>(mutable_registers[whichReg]);
+        if (field >= INC_F) val += r->decode();
+        *r = MIXWord(val);
+    }
+}
+
+void compare(MIXAddr addr, MIXByte index, MIXByte field, Opcode oc)
+{
+    int lo = field/8;
+    int hi = field%8;
+    
+    int newAddr = addr.decode()+ IReg[index].decode();
+    int val = Memory[newAddr].decode(lo,hi); // full decoding and promotion
+
+    int whichReg = static_cast<int>(oc) - static_cast<int>(CMPA);
+    
+    int regVal;
+    if ((whichReg > 0 && whichReg < 7) ) {
+        const MIXAddr *r = static_cast<const MIXAddr*>(registers[whichReg]);
+        regVal = r->decode();
+    } else { // A or X
+        const MIXWord *r = static_cast<const MIXWord*>(registers[whichReg]);
+        regVal = r->decode();
+    }
+    if (val < regVal) compIndicator = -1;
+    else if (val == regVal) compIndicator = 0;
+    else compIndicator = 1;
+}
+
 // The actual optable
 MIXOp opTable[64] = {&nop, &add, &sub, &mul, &div, &numChar, &shift, &move, // 0 to 7 : arithmetic and special
                     &load, &load, &load, &load, &load, &load, &load, &load, // 8 to 15 : load ops
@@ -337,5 +402,5 @@ MIXOp opTable[64] = {&nop, &add, &sub, &mul, &div, &numChar, &shift, &move, // 0
                      &store, &store, &store, &store, &store, &store, &store, &store, // 24 to 31 : store ops
       &store, &store, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &jump, // 32 to 39 : store, I/O, jump on indicators
 &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, &jumpRegCond, // 40 to 47 : jump on registers
-&nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, // 48 to 55 :  immediates
-&nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc, &nullfunc}; // 55 to 63 : comparison
+&immed, &immed, &immed, &immed, &immed, &immed, &immed, &immed, // 48 to 55 :  immediates
+&compare, &compare, &compare, &compare, &compare, &compare, &compare, &compare}; // 55 to 63 : comparison
